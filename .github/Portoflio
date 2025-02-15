@@ -1,0 +1,65 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Mail, Github, Linkedin } from "lucide-react";
+
+const projects = [
+  {
+    title: "Portfolio Website",
+    description: "A personal portfolio showcasing my projects and skills.",
+    link: "#",
+  },
+  {
+    title: "E-commerce Store",
+    description: "A fully functional e-commerce website with payment integration.",
+    link: "#",
+  },
+];
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white p-8">
+      <header className="text-center mb-12">
+        <motion.h1 
+          className="text-4xl font-bold mb-2" 
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: 1, y: 0 }}
+        >
+          My Portfolio
+        </motion.h1>
+        <p className="text-gray-400">Full-Stack Developer | Open to Work</p>
+      </header>
+      
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <Card key={index} className="bg-gray-800 p-6 rounded-2xl">
+              <CardContent>
+                <h3 className="text-xl font-semibold">{project.title}</h3>
+                <p className="text-gray-400 my-2">{project.description}</p>
+                <a href={project.link} className="text-blue-400 hover:underline">View Project</a>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+      
+      <section className="text-center">
+        <h2 className="text-2xl font-semibold mb-4">Contact Me</h2>
+        <div className="flex justify-center gap-6">
+          <Button variant="outline" className="flex items-center gap-2">
+            <Mail /> Email
+          </Button>
+          <Button variant="outline" className="flex items-center gap-2">
+            <Github /> GitHub
+          </Button>
+          <Button variant="outline" className="flex items-center gap-2">
+            <Linkedin /> LinkedIn
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
+}
